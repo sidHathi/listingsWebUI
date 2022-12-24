@@ -18,9 +18,10 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "typeRoots": ["./global.d.ts", "./node_modules/@types"]
   },
   "include": [
     "src"
-, ".eslintcr.js"  ]
+, ".eslintcr.js", "global.d.ts"  ]
 }
