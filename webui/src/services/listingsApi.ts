@@ -1,6 +1,6 @@
 import { ApiService } from "./request";
 
-import SearchQuery from "../globalInterfaces/searchQuery";
+import SearchQuery from "../models/searchQuery";
 import { AxiosResponse } from "axios";
 
 export interface ListingsApi {

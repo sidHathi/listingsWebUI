@@ -12,5 +12,5 @@ export default interface Listing {
     shortestLease: number;
     pets: boolean;
     transit: boolean;
-    scrapeTime: Date;
+    scrapeTime: string;
 }

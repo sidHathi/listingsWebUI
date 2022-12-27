@@ -1,0 +1,101 @@
+.queryModifier {
+    width: 100%;
+    margin-top: -20px;
+
+    .inner{
+        max-width:900px;
+        margin-right: auto;
+        margin-left: auto;
+        text-align: center;
+        padding-bottom: 20px;
+    }
+}
+
+.expandedSelectors {
+    width: 1200px;
+    max-width: 96%;
+    padding: 0;
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -20px;
+    border-radius: 20px;
+    overflow: hidden;
+    padding: 40px;
+    text-align: left;
+
+    .inner {
+        margin-right: auto;
+        margin-left: auto;
+        width: 500px;
+        max-width: 100%;
+        text-align: center;
+        padding-bottom: 20px;
+    }
+
+    .confirmButton {
+        background: linear-gradient(90deg, #8B288F 30%, #313192 100%) !important;
+        display: block;
+        min-width: 0 !important;
+        width: 100%;
+        height: 40px;
+        border-radius: 20px;
+        padding: 0;
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: auto;
+        color: white;
+        overflow: hidden;
+        font-family: Regular;
+        font-weight: 700;
+        margin-top: 12px;
+
+        &:hover {
+            color: whitesmoke;
+            background: linear-gradient(90deg, #8B288F 30%, #313192 120%) !important;
+        }
+    }
+}
+
+.citySelectionContainer {
+    padding: 0 20px 20px 20px;
+    text-align: center;
+}
+
+.numberSelectionContainer {
+    text-align: center;
+
+    .rangeContainer {
+        width: 700px;
+        max-width: 96%;
+        margin-top: 20px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .confirmButton {
+        background: linear-gradient(90deg, #8B288F 30%, #313192 100%) !important;
+        display: block;
+        min-width: 0 !important;
+        width: 50%;
+        height: 40px;
+        border-radius: 20px;
+        padding: 0;
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: auto;
+        color: white;
+        overflow: hidden;
+        font-family: Regular;
+        font-weight: 700;
+        margin-top: 20px;
+        border: none;
+        margin-left: auto;
+        margin-right: auto;
+
+        &:hover {
+            color: whitesmoke;
+            background: linear-gradient(90deg, #8B288F 30%, #313192 120%) !important;
+        }
+    }
+}

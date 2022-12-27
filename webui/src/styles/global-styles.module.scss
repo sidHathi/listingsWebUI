@@ -1,0 +1,45 @@
+@font-face {
+    font-family: "Regular";   /*Can be any text*/
+    src: local("AtkinsonHyperlegible-Regular"),
+        url("./fonts/AtkinsonHyperlegible-Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Italic";   /*Can be any text*/
+    src: local("AtkinsonHyperlegible-Italic"),
+        url("./fonts/AtkinsonHyperlegible-Italic.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Bold";   /*Can be any text*/
+    src: local("AtkinsonHyperlegible-Bold"),
+        url("./fonts/AtkinsonHyperlegible-Bold.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "BoldItalic";   /*Can be any text*/
+    src: local("AtkinsonHyperlegible-BoldItalic"),
+        url("./fonts/AtkinsonHyperlegible-BoldItalic.ttf") format("truetype");
+}
+
+body {
+    font-family: "Regular";
+}
+
+.label {
+    font-size: 0.8rem;
+    padding: 0;
+    font-weight: 700;
+    margin: 0;
+}
+
+.err {
+    font-size: 0.8rem;
+    color: red;
+}
+
+.alert {
+    margin: 8px;
+    font-family: Regular;
+    border-radius: 20px
+}

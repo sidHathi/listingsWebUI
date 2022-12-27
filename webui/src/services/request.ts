@@ -18,8 +18,8 @@ export interface ApiService {
 export const apiService: ApiService = {
     baseURL: '',
     instance: null,
-    request: (options : AxiosRequestConfig) => {
-        if (apiService.instance == null) {
+    request: function(options: AxiosRequestConfig): Promise<AxiosResponse> | Promise<never> {
+        if (this.instance == null) {
             return Promise.reject();
         }
 
@@ -32,32 +32,32 @@ export const apiService: ApiService = {
             );
         }
 
-        return apiService.instance({
+        return this.instance({
             ...options,
             headers: {
-            ...headers,
-            ...options?.headers,
+                ...headers,
+                ...options?.headers,
             },
         });
     },
-    init: (baseURL: string) => {
-        apiService.baseURL = baseURL;
-        apiService.instance = axios.create({
+    init: function(baseURL: string) : void {
+        this.baseURL = baseURL;
+        this.instance = axios.create({
             baseURL,
         });
 
         // REQUEST INTERCEPTORS
-        apiService.instance.interceptors.request.use(
+        this.instance.interceptors.request.use(
             requestInterceptors.success,
             requestInterceptors.error,
         );
 
         // RESPONSE INTERCEPTORS
-        apiService.instance.interceptors.response.use(
-        (response) => response,
-        async (error) => {
-            Promise.reject(error);
-        },
+        this.instance.interceptors.response.use(
+            (response) => response,
+            async (error) => {
+                Promise.reject(error);
+            },
         );
     }
 }
