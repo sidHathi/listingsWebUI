@@ -13,6 +13,10 @@ import CityBanner from "../ui/CityBanner";
 import QueryModifier from "../components/QueryModifier";
 import { Spinner } from "react-bootstrap";
 import FilterMenu from "../components/filterMenu/FilterMenu";
+import buildQueryParams from "../services/queryParamUtils";
+import getCursor from "../services/cursor";
+import { Button } from "@mui/material";
+import styles from './page-styles.module.scss';
 
 export default function SearchResults(): JSX.Element {
     const { listingsApi } = useRequest();
@@ -35,7 +39,8 @@ export default function SearchResults(): JSX.Element {
             address: 'Boston, MA',
             bedrooms: 1,
             leaseTerm: 12,
-            price: [0, 3000]
+            price: [0, 3000],
+            sortBy: 'relevance'
         });
     });
 
@@ -44,12 +49,17 @@ export default function SearchResults(): JSX.Element {
             return;
         }
 
+        let queryParams: {[key: string]: any} | undefined = undefined;
+        if (queryContext.query.sortBy !== undefined) {
+            queryParams = buildQueryParams(queryContext.query)
+        }
+
         const getResponse = async (): Promise<void> => {
             const {query} = queryContext;
             if (!query) {
                 return;
             }
-            const response = await listingsApi.searchListings(query);
+            const response = await listingsApi.searchListings(query, queryParams);
             setApiResponse(response);
             setListings(parse<Listing[]>(response));
         }
@@ -63,16 +73,35 @@ export default function SearchResults(): JSX.Element {
     }, [setFetchNewListings])
 
     const setNewContext = useCallback((newContext: SearchQuery) => {
-        if (!queryContext || !queryContext.setQuery) {
+        if (!apiResponse || !queryContext || !queryContext.setQuery) {
             return;
         }
         queryContext.setQuery(newContext);
+        queryContext.setCursor(getCursor(apiResponse) || undefined);
         getNewListings();
-    }, [queryContext, getNewListings]);
+    }, [queryContext, getNewListings, apiResponse]);
+
+    const fetchNextPage = useCallback(() => {
+        if (!queryContext || !queryContext.query || !queryContext.query.cursor) {
+            return;
+        }
+
+        const query = queryContext.query;
+        const queryNextPage = async () => {
+            const queryParams = buildQueryParams(query);
+            const nextResponse = await listingsApi.searchListings(query, queryParams);
+            const nextListings = parse<Listing[]>(nextResponse);
+            if (nextListings != null && listings != null) {
+                setListings(listings.concat(nextListings));
+            }
+        }
+
+        queryNextPage();
+    }, [queryContext, listingsApi, listings]);
 
     const handleContextSwitch = () => {
         setNewContext({
-            providerName: 'facebook',
+            providerNames: ['facebook'],
             location: {
                 lat: 47,
                 long: -122,
@@ -100,7 +129,7 @@ export default function SearchResults(): JSX.Element {
                 <>
                     <CityBanner city={query.address} />
                     <QueryModifier reloadResults={getNewListings}/>
-                    <FilterMenu />
+                    <FilterMenu reloadResults={getNewListings}/>
                     <Container>
                         <Row>
                             {listings.map((listing: Listing) => 
@@ -110,15 +139,16 @@ export default function SearchResults(): JSX.Element {
                             )}
                         </Row>
                     </Container>
+                    <Button className={styles.loadMoreButton} onClick={fetchNextPage}>Load More</Button>
                 </>
             }
 
-            {query &&
+            {/* {query &&
                 <h1> {JSON.stringify(query)}</h1>
             }
 
             <button onClick={getNewListings}>Update Listings</button>
-            <button onClick={handleContextSwitch}>Switch Query Context</button>
+            <button onClick={handleContextSwitch}>Switch Query Context</button> */}
         </div>
     )
 }

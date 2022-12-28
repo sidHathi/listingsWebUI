@@ -4,16 +4,17 @@ import SearchQuery from "../models/searchQuery";
 import { AxiosResponse } from "axios";
 
 export interface ListingsApi {
-    searchListings : (searchQuery: SearchQuery) => Promise<AxiosResponse | null>;
+    searchListings : (searchQuery: SearchQuery, queryParams?: {[key: string]: any}) => Promise<AxiosResponse | null>;
     getListing: (id: string) => Promise<AxiosResponse | null>;
 }
 
 export function listingsApi(apiService: ApiService): ListingsApi {
-    async function searchListings(searchQuery: SearchQuery): Promise<AxiosResponse | null> {
+    async function searchListings(searchQuery: SearchQuery, queryParams?: {[key: string]: any}): Promise<AxiosResponse | null> {
         return apiService.request({
             method: "POST",
             url: `/listings/search/`,
-            data: searchQuery
+            data: searchQuery,
+            params: queryParams,
         })
         .then(response => response)
         .catch(error => {

@@ -1,7 +1,7 @@
 import { AxiosResponse } from "axios";
 
 export default function parse<T>(axiosResponse: AxiosResponse | null): T | null {
-    if (!axiosResponse || axiosResponse.status === undefined || axiosResponse.status !== 200 || axiosResponse.data === undefined || axiosResponse.data.data === undefined) {
+    if (!axiosResponse || !axiosResponse.status || axiosResponse.status !== 200 || !axiosResponse.data || !axiosResponse.data.data) {
         return null;
     }
 

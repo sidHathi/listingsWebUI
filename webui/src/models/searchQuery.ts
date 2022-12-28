@@ -1,7 +1,9 @@
 import { SearchLocation } from './locations';
+import { SortKey } from './sortingOptions';
+import { Provider } from './providers';
 
 export default interface SearchQuery {
-    providerName?: string;
+    providerNames?: Provider[];
     location: SearchLocation;
     address: string;
     leaseTerm: number;
@@ -11,4 +13,6 @@ export default interface SearchQuery {
     reType?: string;
     pets?: boolean;
     transit?: boolean;
+    sortBy?: SortKey;
+    cursor?: string;
 }

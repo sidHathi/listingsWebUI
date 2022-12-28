@@ -45,7 +45,7 @@ export default function ListingContainer(props: ListingContainerProps): JSX.Elem
                 {/* <a href={listing.url}>{'Take me there ➔'}</a> */}
                 <Button href={listing.url} variant='outlined' size='small'>View ➔</Button>
             </UiCardMain>
-            <UiCardSecondary>
+            <UiCardSecondary style={{minWidth: '300px'}}>
                 <Row>
                     <Col xs={7}>
                         <p className={styles.label}>Price</p>

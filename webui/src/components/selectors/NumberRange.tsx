@@ -153,7 +153,6 @@ export function RangeSlider(props: RangeSliderProps) : JSX.Element {
 
     return (
         <IOSSlider
-              aria-label="ios slider"
               defaultValue={value}
               getAriaValueText={valuetext}
               min={min}

@@ -29,7 +29,7 @@
         font-family: Regular;
         font-weight: 700;
         margin-left: 10px;
-        margin-right: 10px;
+        margin-right: 4px;
     }
 
     .leftMost {
@@ -40,45 +40,79 @@
 .filterMenuExpanded {
     background-color: white;
     padding: 20px 20px;
-    width: 400px;
-    max-width: 96%;
-    margin-left: auto;
-    border-radius: 20px 0 20px 20px;
-    margin-top: -5px;
-    margin-right: 10px;
-    text-align: center;
-    box-shadow: rgba(49, 49, 146, 0.05) 0px 4px 6px;
-    font-family: "Regular";
-}
-
-.sortMenuExpanded {
-    background-color: white;
-    padding: 20px 20px;
-    width: 400px;
-    max-width: 96%;
-    margin-left: auto;
+    width: calc(100% - 8px);
+    margin-left: 4px;
+    margin-right: 4px;
     border-radius: 20px;
     margin-top: -5px;
-    margin-right: 10px;
-    text-align: center;
+    text-align: left;
     box-shadow: rgba(49, 49, 146, 0.05) 0px 4px 6px;
     font-family: "Regular";
+
+    .confirmButton {
+        background: whitesmoke;
+        color: #8B288F;
+        height: auto;
+        border-radius: 20px;
+        padding: 8px 20px 8px 20px;
+        font-weight: bolder;
+        display: block;
+        margin-left: auto;
+        margin-right: 12px;
+        margin-top: 4px;
+        margin-bottom: auto;
+        box-sizing: content-box;
+        text-transform: uppercase;
+    }
+
+    .filterRow {
+        display: flex;
+        direction: row;
+        flex-wrap: wrap;
+        row-gap: 10px;
+    }
+
+    .centerBlock {
+        margin-right: auto;
+        margin-left: auto;
+        display: flex;
+        direction: row;
+        flex-wrap: wrap;
+        row-gap: 10px;
+    }
+    
+    h5 {
+        margin-left:12px;
+        margin-top: 10px;
+        margin-bottom: auto;
+        margin-right: 20px;
+    }
+}
+
+.cornerFold {
+    border-radius: 20px 0 20px 20px;
 }
 
 .filterContainer {
     border-radius: 8px;
     padding: 0;
     overflow: hidden;
+    margin-right: 10px;
+    margin-top: 2px;
+    min-width: 180px;
+    height: min-content;
+    margin-bottom: auto;;
 
     .filterHeader {
+        width: 100%;
         border: none;
         outline: none;
-        width: 100%;
         background-color: whitesmoke;
-        padding: 12px 30px;
+        padding: 12px 20px;
         display: flex;
         justify-content: space-between;
         flex-direction: row;
+        height: min-content;
 
         p {
             font-size: medium;
@@ -90,18 +124,57 @@
         }
     }
 
-    .priceFilter {
-        padding: 20px 30px;
+    .filterContent {
+        padding: 20px 20px;
+        min-width: 300px;
 
         .content {
             text-align: left;
         }
-        p.label {
-            text-align: left;
-            font-weight: bolder;
-            font-size: small;
-            margin-top: 10px;
-            margin-bottom: 4px;
+
+        .filterInput {
+            width: 100%;
+            outline: none;
+            border: none;
+            background-color: whitesmoke;
+            border-radius: 20px;
+            padding: 8px 20px;
         }
+
+        .checkBoxRow {
+            display: flex;
+            direction: row;
+            justify-content: space-between;
+        }
+        
+        p {
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+    }
+
+    .small {
+        min-width: 240px;
+    }
+
+    .extraPadding {
+        padding: 20px 30px;
+    }
+}
+
+.sortFieldsContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: auto;
+    margin-right: auto;
+
+    .sortSelect {
+        border:none;
+        outline: none;
+        border-radius: 8px;
+        background-color: whitesmoke;
+        padding: 12px 20px;
+        margin: 4px;
     }
 }
