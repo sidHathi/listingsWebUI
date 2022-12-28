@@ -29,9 +29,10 @@ export function QueryContextProvider({children} : PropsWithChildren<QueryContext
 
     const setQueryVal = (key: keyof SearchQuery, newVal: any) => {
         const newQuery = {...query}
-        if (typeof newQuery[key] === typeof newVal) {
+        if (!newVal || typeof newQuery[key] === typeof newVal) {
             newQuery[key] = newVal;
         }
+        console.log(newQuery);
         newQuery.cursor = undefined;
         setQuery(newQuery as SearchQuery);
     }

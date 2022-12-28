@@ -18,6 +18,7 @@ import { useEffect } from "react";
 import SearchQuery from "../../models/searchQuery";
 import { Provider } from '../../models/providers'
 import ProviderFilter from "./ProviderFilter";
+import FilterFlags from "./FilterFlags";
 
 interface FilterMenuProps {
     reloadResults: () => void;
@@ -112,6 +113,9 @@ export default function FilterMenu(props: FilterMenuProps) : JSX.Element {
             <Container>
                 <div className={styles.filterMenuHeaders}>
                     {/* <h5 className={styles.pageTitle}> Matching Rentals: </h5> */}
+                    { !showFilters && !showSort && 
+                    <FilterFlags relaodResults={reloadResults} />
+                    }
                     <button 
                         className={`${styles.menuButton} ${styles.leftMost}`}
                         style={showSort ? selectedButtonStyle : {}}

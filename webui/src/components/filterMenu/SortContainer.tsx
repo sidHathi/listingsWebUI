@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import styles from './filter-styles.module.scss';
 import { QueryContext } from "../../QueryContext";
 import { SortKey, SortKeyVals } from "../../models/sortingOptions";
+import { getText } from "../../models/sortingOptions";
 
 interface SortContainerProps {
     sortVal: SortKey;
@@ -16,21 +17,6 @@ export default function SortContainer(props: SortContainerProps): JSX.Element {
         setCurrentSortVal(newVal);
         if (onChange) {
             onChange(newVal);
-        }
-    }
-
-    const getText = (sortVal: SortKey) => {
-        switch (sortVal) {
-            case 'distance':
-                return 'Distance from search location';
-            case 'priceLowToHigh':
-                return 'Price (Low to High)';
-            case 'priceHighToLow':
-                return 'Price (High to Low)';
-            case 'relevance':
-                return 'Relevance';
-            default:
-                return 'none';
         }
     }
 

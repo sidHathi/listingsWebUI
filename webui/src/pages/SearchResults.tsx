@@ -139,7 +139,10 @@ export default function SearchResults(): JSX.Element {
                             )}
                         </Row>
                     </Container>
+                    {queryContext.query && queryContext.query.cursor &&
                     <Button className={styles.loadMoreButton} onClick={fetchNextPage}>Load More</Button>
+                    }
+                    <div className={styles.footer} />
                 </>
             }
 

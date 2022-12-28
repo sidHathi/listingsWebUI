@@ -43,3 +43,10 @@ body {
     font-family: Regular;
     border-radius: 20px
 }
+
+.darkNavBG {
+    background-color: rgba(0, 0, 0, 0.1);
+    transition-property: all; 
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 500ms;
+}

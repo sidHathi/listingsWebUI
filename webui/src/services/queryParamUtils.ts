@@ -5,12 +5,16 @@ const buildQueryParams = (query: SearchQuery) => {
     if (query.sortBy !== undefined) {
         switch (query.sortBy) {
             case 'distance':
+                console.log(query.location)
+                console.log(!query.location)
                 if (!query.location || !query.location.lat || !query.location.long || !query.location.radius) {
-                    params.sortBy = 'distance';
-                    params.distanceFromLat = query.location.lat;
-                    params.distanceFromLong = query.location.long;
-                    params.maxDistance = query.location.radius;
+                    break;
                 }
+                params.sortBy = 'distance';
+                params.distanceFromLat = query.location.lat;
+                params.distanceFromLong = query.location.long;
+                params.maxDistance = query.location.radius;
+                console.log(params);
                 break;
             case 'priceHighToLow':
                 params.sortBy = 'price';
