@@ -96,7 +96,7 @@ export default function LocationSelectionContainer(props: LocationSelectionConta
                     <Button onClick={handleConfirmChanges} className={styles.confirmButton}> Confirm changes </Button>
                 }
                 {
-                    allowSave && usageContext === 'queryConstruct' &&
+                    (allowSave || (query !== undefined && query.location !== undefined)) && usageContext === 'queryConstruct' &&
                     <Button onClick={handleConfirmChanges} className={styles.nextButton}> Next </Button>
                 }
             </div>

@@ -14,7 +14,7 @@ export default function LandingPage(): JSX.Element {
     const { width } = useViewport();
 
     const imageBG = {
-        background: (`url(${nycLine}) cover no-repeat`),
+        background: width > uiBreakpoints.medium ? (`url(${nycLine}) center / cover no-repeat`) : (`url(${nycLine}) 50% 100% / cover no-repeat`),
         width: '100%',
         height: '100%',
         backgroundPosition: width > uiBreakpoints.medium ? 'center': '50% 80%',

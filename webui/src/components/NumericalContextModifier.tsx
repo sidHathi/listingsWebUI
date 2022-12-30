@@ -25,7 +25,7 @@ export default function NumericalContextModifier(props: NumericalContextModifier
     const getMin = useCallback(() => {
         switch(contextKey) {
             case 'bedrooms':
-                return 1;
+                return 0;
             case 'leaseTerm':
                 return 3;
             default:
@@ -56,9 +56,10 @@ export default function NumericalContextModifier(props: NumericalContextModifier
     }, [contextKey]);
 
     useEffect(() => {
-        if (value === undefined && contextKey !== undefined && !query) {
+        if (value === undefined && contextKey !== undefined && (!query || !query[contextKey])) {
             setValue(getMin());
             setStartValue(getMin());
+            console.log(getMin());
             return;
         } else if (value !== undefined || !query || !contextKey) {
             return;
@@ -115,7 +116,7 @@ export default function NumericalContextModifier(props: NumericalContextModifier
         handleNewQueryVal(contextKey, undefined);
     }
 
-    if (!startValue) {
+    if (startValue === null) {
         return (
             <Spinner animation="border" role="status">
                 <span className="visually-hidden">Loading...</span>
@@ -132,6 +133,7 @@ export default function NumericalContextModifier(props: NumericalContextModifier
                     step={getStep()}
                     value={startValue}
                     onChange={handleNewValue}
+                    valueLabelOverride={contextKey === 'bedrooms' ? (val: number) => (val === 0 ? ('Studio') : (undefined)) : undefined}
                 />}
                 <p className={globalStyles.label}> {getLabel()} </p>
                 <Button className={styles.skipButton} onClick={handleSetAny}>Search for any {getLabel()}</Button>
@@ -140,13 +142,13 @@ export default function NumericalContextModifier(props: NumericalContextModifier
                     <Button onClick={handleConfirmChanges} className={styles.confirmButton}> Confirm changes </Button>
                 }
                 {
-                    allowSave && usageContext === 'queryConstruct' && query !== undefined && query.bedrooms !== undefined ?
+                    usageContext === 'queryConstruct' && query !== undefined && contextKey === 'leaseTerm' ?
                     <Button 
                         onClick={handleConfirmChanges} 
                         className={`${styles.confirmButton} ${styles.buttonSmall}`}> 
                         Search 
                     </Button> :
-                    allowSave && usageContext === 'queryConstruct' ?
+                    usageContext === 'queryConstruct' ?
                     <Button 
                         onClick={handleConfirmChanges} 
                         className={`${styles.nextButton} ${styles.buttonSmall}`}> 

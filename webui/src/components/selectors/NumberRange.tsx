@@ -74,18 +74,21 @@ interface NumberRangeProps {
         value: number | number[], 
         activeThumb: number
     ) => void;
+    valueLabelOverride?: (val: number) => string | undefined;
 }
-
 
 export function NumberSlider(props: NumberRangeProps) : JSX.Element {
     let marks: {value : number}[] = [];
-    const { min, max, step, value, onChange } = props;
+    const { min, max, step, value, onChange, valueLabelOverride } = props;
     if (step !== undefined) {
         const steppedValues = _.range(min, max + 1, step);
         marks = steppedValues.map((val) => {
             let label = `${val}`;
             if (val >= max) {
                 label = `${val}+`
+            }
+            if (valueLabelOverride !== undefined) {
+                label = valueLabelOverride(val) || label;
             }
             return ({value: val, label: label});
         });
