@@ -6,14 +6,18 @@ import UiCard, { UiCardMain } from '../ui/UiCard';
 import logoUnaltered from '../assets/logo-06.png';
 import QueryConstructor from '../components/QueryConstructor';
 import nycLine from '../assets/nycLine-01.png';
+import { useViewport } from '../ui/useViewport';
+import { uiBreakpoints } from '../ui/breakpoints';
 
 export default function LandingPage(): JSX.Element {
     const [expanded, setExpanded] = useState(false);
+    const { width } = useViewport();
 
     const imageBG = {
-        background: (`url(${nycLine}) center / cover no-repeat`),
+        background: (`url(${nycLine}) cover no-repeat`),
         width: '100%',
-        height: '100%'
+        height: '100%',
+        backgroundPosition: width > uiBreakpoints.medium ? 'center': '50% 80%',
     }
 
     const getSearchContainerStyle = useCallback(() => {
