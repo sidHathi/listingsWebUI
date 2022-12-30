@@ -74,13 +74,15 @@ export default function QueryModifier(props: QueryModifierProps) : JSX.Element {
     const navbarStickAndBackgroundStyle = {
         top: '60px',
         paddingTop: '20px',
-        background: 'rgba(255, 255, 255, 0.75)'
+        paddingBottom: '10px',
+        background: 'rgba(250, 250, 250, 0.75)'
     }
 
     const backgroundStyle = {
         top: '0px',
         paddingTop: '20px',
-        background: 'rgba(255, 255, 255, 0.75)'
+        paddingBottom: '10px',
+        background: 'rgba(250, 250, 250, 0.75)'
     }
 
     return (
