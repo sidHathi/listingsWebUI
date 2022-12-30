@@ -133,19 +133,19 @@ export default function SearchResults(): JSX.Element {
                             {listings.map((listing: Listing) => {
                                 if (width <= uiBreakpoints.small) {
                                     return (
-                                        <Col xs={12}>
+                                        <Col xs={12} key={listing._id}>
                                             <ListingContainer listing={listing} />
                                         </Col>
                                     )
                                 } else if (width <= uiBreakpoints.large) {
                                     return (
-                                        <Col sm={6}>
+                                        <Col sm={6} key={listing._id}>
                                             <ListingContainer listing={listing} />
                                         </Col>
                                     )
                                 } else {
                                     return (
-                                        <Col md={4}>
+                                        <Col md={4} key={listing._id}>
                                             <ListingContainer listing={listing} />
                                         </Col>
                                     )

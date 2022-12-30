@@ -72,7 +72,8 @@ $large: 1000px;
 
 @media screen and (max-width: 768px) {
    .expandedSelectors {
-    padding: 12px;
+        padding: 12px;
+        padding-bottom: 20px;
    }
 }
 
@@ -301,5 +302,6 @@ $large: 1000px;
         padding: 8px;
         width: 92.5vw;
         margin: 0;
+        padding-bottom: 20px;
     }
 }
