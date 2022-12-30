@@ -7,6 +7,8 @@ import SearchQuery from "../models/searchQuery";
 import { QueryContext } from "../QueryContext";
 import { useNavigate } from "react-router-dom";
 import SearchIcon from '@mui/icons-material/Search';
+import { useViewport } from "../ui/useViewport";
+import { uiBreakpoints } from '../ui/breakpoints';
 
 interface QueryConstructorProps {
     handleOpen: () => void;
@@ -17,6 +19,7 @@ export default function QueryConstructor(props: QueryConstructorProps) : JSX.Ele
     const { handleOpen, handleClose } = props;
     const { query, setQuery }  = useContext(QueryContext);
     const navigate = useNavigate();
+    const { width } = useViewport();
 
     const [locationExpanded, setLocationExpanded] = useState(false);
     const [sizeExpanded, setSizeExpanded] = useState(false);
@@ -143,17 +146,17 @@ export default function QueryConstructor(props: QueryConstructorProps) : JSX.Ele
     return (
         <>
         <div className={getOuterSearchClasses()}>
-            <div className={styles.searchHeaders}>
+            <div className={styles.searchHeaders} style={searchEnabled ? {width: '87.5%'} : {}}>
                 <button 
                     className={getActiveInactiveClasses('location')} 
                     onClick={handleToggleLocationExpand}
-                    style={{borderRight: '1px solid lightgray', flex: '1 1 auto'}}>
+                    style={width > uiBreakpoints.extraSmall ? {borderRight: '1px solid lightgray', flex: '1 1 auto'} : {}}>
                     Select a location
                 </button>
                 <button 
                     className={getActiveInactiveClasses('size')} 
                     onClick={handleToggleSizeExpand}
-                    style={{borderRight: '1px solid lightgray'}}>
+                    style={width > uiBreakpoints.small ? {borderRight: '1px solid lightgray'} : {}}>
                     Select a size
                 </button>
                 <button className={getActiveInactiveClasses('term')} onClick={handleToggleTermExpand}>
@@ -162,7 +165,7 @@ export default function QueryConstructor(props: QueryConstructorProps) : JSX.Ele
             </div>
             { searchEnabled && 
                 <button className={styles.searchButton}>
-                    <SearchIcon fontSize='small' />
+                    <SearchIcon fontSize='small' onClick={handleSearch}/>
                 </button>
             }
         </div>

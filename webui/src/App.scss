@@ -1,3 +1,7 @@
+$small: 450px;
+$medium: 760px;
+$large: 1000px;
+
 @font-face {
   font-family: "Regular";   /*Can be any text*/
   src: local("AtkinsonHyperlegible-Regular"),
@@ -48,6 +52,21 @@ a {
     color: #313192;
   }
 }
+
+@media screen and (max-width: $small) {
+  h1, h2 {
+    font-size: 2rem;
+  }
+
+  p {
+    font-size: 0.8em;
+  }
+
+  button, label, input textarea {
+    font-size: 0.8em;
+  }
+}
+
 
 .App {
   text-align: center;

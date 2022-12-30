@@ -1,3 +1,7 @@
+$small: 450px;
+$medium: 760px;
+$large: 1000px;
+
 .queryModifier {
     width: 100%;
     margin-top: -20px;
@@ -9,11 +13,14 @@
     z-index: 99999999;
 
     .inner{
-        max-width:900px;
+        width: 900px;
+        max-width:98vw;
         margin-right: auto;
         margin-left: auto;
         text-align: center;
         padding-bottom: 20px;
+        padding-left: 8px;
+        padding-right: 8px;
     }
 }
 
@@ -61,6 +68,12 @@
             background: linear-gradient(90deg, #8B288F 30%, #313192 120%) !important;
         }
     }
+}
+
+@media screen and (max-width: 768px) {
+   .expandedSelectors {
+    padding: 12px;
+   }
 }
 
 .citySelectionContainer {
@@ -135,6 +148,7 @@
     direction: row;
     flex-wrap: nowrap;
     justify-content: space-between;
+    row-gap: 10px;
 
     .searchHeaders{
         display: flex;
@@ -142,7 +156,8 @@
         align-items: center;
         flex-wrap: wrap;
         justify-content: space-evenly;
-        width: 90%;
+        width: 100%;
+        row-gap: 10px;
 
         .selectionHeader {
             background: none;
@@ -171,7 +186,6 @@
 
     .searchButton {
         width:36px;
-        max-width: 9%;
         height: 36px;
         max-height:100%;
         background: linear-gradient(90deg, #8B288F 30%, #313192 120%) !important;
@@ -200,7 +214,7 @@
 
 .expandedContent {
     width: 80vw;
-    max-width: 96vw;
+    max-width: 98vw;
     border-radius: 0 0 20px 20px;
     background: white;
     padding: 40px 40px;
@@ -263,5 +277,29 @@
         display: block;
         margin-left: auto;
         margin-right: auto;
+    }
+}
+
+
+@media screen and (max-width : $large) {
+    .searchBar {
+        margin-left: 20px;
+        margin-right: 20px;
+        margin-top: 10px;
+        padding: 16px 4px;
+        border-radius: 50px;
+    }
+
+    .searchExpanded {
+        padding: 8px;
+        width: 92.5vw;
+        margin: 0;
+        border-radius: 20px 20px 0 0;
+    }
+
+    .expandedContent {
+        padding: 8px;
+        width: 92.5vw;
+        margin: 0;
     }
 }

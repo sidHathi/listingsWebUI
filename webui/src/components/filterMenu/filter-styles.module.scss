@@ -37,6 +37,14 @@
     }
 }
 
+@media screen and (max-width: 600px) {
+    .filterMenuHeaders {
+        .menuButton {
+            padding: 8px 20px;
+        }
+    }
+}
+
 .filterMenuExpanded {
     background-color: white;
     padding: 20px 20px;
@@ -203,6 +211,15 @@
         p {
             margin-top: auto;
             margin-bottom: auto;
+        }
+    }
+}
+
+
+@media screen and (max-width: 600px) {
+    .filterFlagsContainer {
+        .filterFlag {
+            padding: 8px 20px;
         }
     }
 }

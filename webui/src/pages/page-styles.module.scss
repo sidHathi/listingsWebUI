@@ -1,3 +1,7 @@
+$small: 450px;
+$medium: 760px;
+$large: 1000px;
+
 .loadMoreButton {
     margin-left: auto !important;
     margin-right: auto !important;
@@ -58,6 +62,12 @@
                     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
                     transition-duration: 500ms;
                     overflow: hidden;
+                }
+            }
+
+            @media screen and (max-width: $large) {
+                .searchContent {
+                    padding: 20px;
                 }
             }
         }

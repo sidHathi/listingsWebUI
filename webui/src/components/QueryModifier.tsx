@@ -87,15 +87,15 @@ export default function QueryModifier(props: QueryModifierProps) : JSX.Element {
         <div className={styles.queryModifier} style={scrollDirection !== 'down' && pageOffset < 200 ? navbarStickStyle : pageOffset > 200 && scrollDirection !== 'down' ? navbarStickAndBackgroundStyle : pageOffset > 200 ? backgroundStyle: {}}>
             <div className={styles.inner}>
                 <Row>
-                    <Col xs={4} style={{textAlign: 'right', justifyContent:'right'}}>
+                    <Col xs={4} style={{textAlign: 'right', justifyContent:'right', padding: 0}}>
                         <Selector selected={locSelected} toggleSelect={toggleLoc} orientation='left' value={query.address} fieldName="Location">
                         </Selector>
                     </Col>
-                    <Col xs={4} style={{textAlign: 'center', justifyContent:'center'}}>
+                    <Col xs={4} style={{textAlign: 'center', justifyContent:'center', padding: 0}}>
                         <Selector selected={bedSelected} toggleSelect={toggleBed} orientation='none' value={!query.bedrooms ? 'Any' : `${query.bedrooms} bedroom`} fieldName="size">
                         </Selector>
                     </Col>
-                    <Col xs={4} style={{textAlign: 'left', justifyContent:'left'}}>
+                    <Col xs={4} style={{textAlign: 'left', justifyContent:'left', padding: 0}}>
                         <Selector selected={termSelected} toggleSelect={toggleTerm} orientation='right' value={!query.leaseTerm ? 'Any' : `${query.leaseTerm} months`} fieldName="min lease">
                         </Selector>
                     </Col>

@@ -1,4 +1,4 @@
-import React, { ReactElement, useState } from "react";
+import React, { ReactElement, useState, useContext } from "react";
 import { useEffect } from "react";
 import City from "../../models/city";
 import { useRequest } from "../../services/useRequest";
@@ -10,6 +10,7 @@ import seattleImage from '../../assets/seattle.jpeg';
 import sfImage from '../../assets/sanFran.jpeg';
 import { DBLocation } from "../../models/locations";
 import { Spinner } from "react-bootstrap";
+import { AppContext } from "../../AppContext";
 
 interface CitySelectorProps {
     city?: City;
@@ -20,6 +21,7 @@ interface CitySelectorProps {
 export default function CitySelector(props: CitySelectorProps) : JSX.Element {
     const { citiesApi } = useRequest();
 
+    const { cities: contextCities } = useContext(AppContext);
     const [ cities, setCities ] = useState<City[] | null>(null);
     const [ selectedCityName, setSelectedCityName ] = useState<string | null>(null);
 
@@ -33,6 +35,11 @@ export default function CitySelector(props: CitySelectorProps) : JSX.Element {
 
     useEffect(() => {
         if (cities != null) return;
+        if (contextCities != null) {
+            setCities(contextCities);
+            return;
+        }
+
         const getCitiesList = async () => {
             const res = await citiesApi.get_cities_details();
             const citiesList = parse<City[]>(res);
@@ -44,7 +51,7 @@ export default function CitySelector(props: CitySelectorProps) : JSX.Element {
         };
 
         getCitiesList();
-    }, [cities, setCities, citiesApi]);
+    }, [cities, setCities, citiesApi, contextCities]);
 
     const getCityJsxByName = (cityName: string, onClick: React.MouseEventHandler<HTMLButtonElement>) => {
         let file = '';

@@ -18,10 +18,13 @@ import getCursor from "../services/cursor";
 import { Button } from "@mui/material";
 import styles from './page-styles.module.scss';
 import globalStyles from '../styles/global-styles.module.scss';
+import { useViewport } from "../ui/useViewport";
+import { uiBreakpoints } from "../ui/breakpoints";
 
 export default function SearchResults(): JSX.Element {
     const { listingsApi } = useRequest();
     const queryContext = useContext(QueryContext);
+    const { width } = useViewport();
 
     const [apiResponse, setApiResponse] = useState<AxiosResponse | null>(null);
     const [listings, setListings] = useState<Listing[] | null>(null);
@@ -100,20 +103,6 @@ export default function SearchResults(): JSX.Element {
         queryNextPage();
     }, [queryContext, listingsApi, listings]);
 
-    const handleContextSwitch = () => {
-        setNewContext({
-            providerNames: ['facebook'],
-            location: {
-                lat: 47,
-                long: -122,
-                radius: 500,
-            },
-            address: 'Seattle, WA',
-            bedrooms: 1,
-            leaseTerm: 12,
-        });
-    }
-
     const { query, setQuery } = queryContext;
 
     if (!query || !listings) {
@@ -138,12 +127,30 @@ export default function SearchResults(): JSX.Element {
                     <CityBanner city={query.address} />
                     <QueryModifier reloadResults={getNewListings}/>
                     <FilterMenu reloadResults={getNewListings}/>
-                    <Container>
+                    <Container fluid={width < uiBreakpoints.xl}>
                         <Row>
-                            {listings.map((listing: Listing) => 
-                            <Col lg={4}>
-                                <ListingContainer listing={listing} />
-                            </Col>
+
+                            {listings.map((listing: Listing) => {
+                                if (width <= uiBreakpoints.small) {
+                                    return (
+                                        <Col xs={12}>
+                                            <ListingContainer listing={listing} />
+                                        </Col>
+                                    )
+                                } else if (width <= uiBreakpoints.large) {
+                                    return (
+                                        <Col sm={6}>
+                                            <ListingContainer listing={listing} />
+                                        </Col>
+                                    )
+                                } else {
+                                    return (
+                                        <Col md={4}>
+                                            <ListingContainer listing={listing} />
+                                        </Col>
+                                    )
+                                }
+                            }
                             )}
                         </Row>
                     </Container>
