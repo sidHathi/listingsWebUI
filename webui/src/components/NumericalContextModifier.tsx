@@ -6,34 +6,23 @@ import { NumberSlider } from "./selectors/NumberRange";
 import styles from './component-styles.module.scss';
 import globalStyles from '../styles/global-styles.module.scss';
 import { Button, Spinner } from "react-bootstrap";
+import { useCallback } from "react";
 
 interface NumericalContextModifierProps {
     contextKey: keyof SearchQuery;
-    handleClose: () => void;
+    handleNewQueryVal: (contextKey: keyof SearchQuery, newVal: any) => void;
+    usageContext: "queryConstruct" | "queryModify";
 }
 
 export default function NumericalContextModifier(props: NumericalContextModifierProps) : JSX.Element {
-    const { contextKey, handleClose } = props;
+    const { contextKey, handleNewQueryVal, usageContext } = props;
     const { query, setQuery } = useContext(QueryContext);
 
     const [ startValue, setStartValue ] = useState<number | null>(null);
-    const [ value, setValue ] = useState<number | null>(null);
+    const [ value, setValue ] = useState<number | undefined>(undefined);
     const [ allowSave, setAllowSave ] = useState<boolean>(false);
 
-    useEffect(() => {
-        if (value != null || !query || !contextKey) {
-            return;
-        }
-
-        const newVal = query[contextKey];
-        console.log(newVal);
-        if (newVal !== undefined && typeof newVal === 'number') {
-            setValue(newVal);
-            setStartValue(newVal);
-        }
-    }, [setValue, contextKey, query, value]);
-
-    const getMin = () => {
+    const getMin = useCallback(() => {
         switch(contextKey) {
             case 'bedrooms':
                 return 1;
@@ -42,9 +31,9 @@ export default function NumericalContextModifier(props: NumericalContextModifier
             default:
                 return 0;
         }
-    }
+    }, [contextKey])
 
-    const getMax = () => {
+    const getMax = useCallback(() => {
         switch(contextKey) {
             case 'bedrooms':
                 return 4;
@@ -53,9 +42,9 @@ export default function NumericalContextModifier(props: NumericalContextModifier
             default:
                 return 0;
         }
-    }
+    }, [contextKey]);
 
-    const getStep = () => {
+    const getStep = useCallback(() => {
         switch(contextKey) {
             case 'bedrooms':
                 return 1;
@@ -64,7 +53,27 @@ export default function NumericalContextModifier(props: NumericalContextModifier
             default:
                 return 1;
         }
-    }
+    }, [contextKey]);
+
+    useEffect(() => {
+        if (value === undefined && contextKey !== undefined && !query) {
+            setValue(getMin());
+            setStartValue(getMin());
+            return;
+        } else if (value !== undefined || !query || !contextKey) {
+            return;
+        }
+
+        const newVal = query[contextKey];
+        console.log(newVal);
+        if (newVal !== undefined && typeof newVal === 'number') {
+            setValue(newVal);
+            setStartValue(newVal);
+        } else {
+            setValue(getMin());
+            setStartValue(getMin());
+        }
+    }, [setValue, contextKey, query, value, getMin]);
 
     const handleNewValue = (
         event : Event, 
@@ -93,26 +102,17 @@ export default function NumericalContextModifier(props: NumericalContextModifier
     }
 
     const handleConfirmChanges = () => {
-        console.log(value);
-        if (!setQuery || !query || !value) {
+        if (!setQuery || !query) {
             return
         }
-        console.log('saving query');
-        const newQuery = {
-            ...query
-        }; 
-        switch(contextKey) {
-            case 'bedrooms':
-                newQuery.bedrooms = value;
-                break;
-            case 'leaseTerm':
-                newQuery.leaseTerm = value;
-                break;
-            default:
-                return;
+        handleNewQueryVal(contextKey, value);
+    }
+
+    const handleSetAny = () => {
+        if (!setQuery || !query) {
+            return
         }
-        setQuery(newQuery);
-        handleClose();
+        handleNewQueryVal(contextKey, undefined);
     }
 
     if (!startValue) {
@@ -134,9 +134,24 @@ export default function NumericalContextModifier(props: NumericalContextModifier
                     onChange={handleNewValue}
                 />}
                 <p className={globalStyles.label}> {getLabel()} </p>
+                <Button className={styles.skipButton} onClick={handleSetAny}>Search for any {getLabel()}</Button>
                 {
-                    allowSave &&
+                    allowSave && usageContext === 'queryModify' &&
                     <Button onClick={handleConfirmChanges} className={styles.confirmButton}> Confirm changes </Button>
+                }
+                {
+                    allowSave && usageContext === 'queryConstruct' && query !== undefined && query.bedrooms !== undefined ?
+                    <Button 
+                        onClick={handleConfirmChanges} 
+                        className={`${styles.confirmButton} ${styles.buttonSmall}`}> 
+                        Search 
+                    </Button> :
+                    allowSave && usageContext === 'queryConstruct' ?
+                    <Button 
+                        onClick={handleConfirmChanges} 
+                        className={`${styles.nextButton} ${styles.buttonSmall}`}> 
+                        Next 
+                    </Button> : <></>
                 }
             </div>
         </div>

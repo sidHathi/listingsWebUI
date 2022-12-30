@@ -17,6 +17,7 @@ import buildQueryParams from "../services/queryParamUtils";
 import getCursor from "../services/cursor";
 import { Button } from "@mui/material";
 import styles from './page-styles.module.scss';
+import globalStyles from '../styles/global-styles.module.scss';
 
 export default function SearchResults(): JSX.Element {
     const { listingsApi } = useRequest();
@@ -37,7 +38,7 @@ export default function SearchResults(): JSX.Element {
                 radius: 500,
             },
             address: 'Boston, MA',
-            bedrooms: 1,
+            bedrooms: undefined,
             leaseTerm: 12,
             price: [0, 3000],
             sortBy: 'relevance'
@@ -116,10 +117,17 @@ export default function SearchResults(): JSX.Element {
     const { query, setQuery } = queryContext;
 
     if (!query || !listings) {
-        return(
-            <Spinner animation="border" role="status">
-                <span className="visually-hidden">Loading...</span>
-            </Spinner>
+        return (
+            <div className={globalStyles.spinnerContainer} style={{paddingTop: '40vh'}}>
+                <Spinner animation="border" role="status" style={{
+                    margin: 'auto',
+                    display: 'block',
+                    width: '3.6em',
+                    height: '3.6em',
+                }}>
+                    <span className="visually-hidden">Loading...</span>
+                </Spinner>
+            </div>
         );
     }
 

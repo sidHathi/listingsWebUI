@@ -5,6 +5,9 @@
     margin: 12px 4px;
     background-color: white;
     padding: 0;
+    transition-property: all; 
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 250ms;
 
     h4 {
         padding: 0 5px 4px 0;

@@ -11,12 +11,13 @@ import Alert from '@mui/material/Alert';
 import { Spinner } from 'react-bootstrap';
 
 interface LocationSelectionContainerProps {
-    handleClose: () => void;
+    handleNewQueryLocation: (newLocation: SearchLocation, newAddress: string) => void;
+    usageContext: "queryConstruct" | "queryModify";
 }
 
 export default function LocationSelectionContainer(props: LocationSelectionContainerProps) : JSX.Element {
-    const {query, setQuery} = useContext(QueryContext);
-    const {handleClose} = props;
+    const { query, setQuery } = useContext(QueryContext);
+    const { handleNewQueryLocation, usageContext } = props;
 
     const [radius, setRadius] = useState(20);
     const [location, setLocation] = useState(query?.location);
@@ -53,21 +54,14 @@ export default function LocationSelectionContainer(props: LocationSelectionConta
     };
 
     const handleConfirmChanges = () => {
-        if (!query || !location || !address || !setQuery) {
+        if (!location || !address) {
             setLocationErr(true);
             return;
         }
-        let newQuery = {...query};
-
-        newQuery.location = location;
-        newQuery.address = address;
-        console.log(newQuery);
-
-        setQuery(newQuery);
-        handleClose();
+        handleNewQueryLocation(location, address);
     };
 
-    if (!city) {
+    if (!city && query !== undefined) {
         return (
             <Spinner animation="border" role="status">
                 <span className="visually-hidden">Loading...</span>
@@ -79,7 +73,7 @@ export default function LocationSelectionContainer(props: LocationSelectionConta
         <>
             <div className={styles.citySelectionContainer}>
                 <h4>Select a city</h4>
-                <CitySelector city={city} setCity={setCity} handleNewLocation={handleNewLocation}/>
+                <CitySelector city={city || undefined} setCity={setCity} handleNewLocation={handleNewLocation}/>
             </div>
             <div className={styles.inner}>
                 <p className={globalStyles.label}>or</p>
@@ -98,8 +92,12 @@ export default function LocationSelectionContainer(props: LocationSelectionConta
                     </Alert>
                 }
                 {
-                    allowSave &&
+                    allowSave && usageContext === 'queryModify' &&
                     <Button onClick={handleConfirmChanges} className={styles.confirmButton}> Confirm changes </Button>
+                }
+                {
+                    allowSave && usageContext === 'queryConstruct' &&
+                    <Button onClick={handleConfirmChanges} className={styles.nextButton}> Next </Button>
                 }
             </div>
         </>

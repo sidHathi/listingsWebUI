@@ -1,10 +1,11 @@
-import React, {useContext, useState} from "react";
+import React, {useContext, useState, useEffect} from "react";
 
 import { QueryContext } from "../QueryContext";
 import { Row, Col } from 'react-bootstrap';
 import Selector from "./selectors/Selector";
 import styles from './component-styles.module.scss';
 import ExpandedSearch, { ExpandedSearchStates } from "./ExpandedSearch";
+import useScrollDirection from "../ui/ScrollDirection";
 
 interface QueryModifierProps {
     reloadResults: () => void;
@@ -12,9 +13,22 @@ interface QueryModifierProps {
 
 export default function QueryModifier(props: QueryModifierProps) : JSX.Element {
     const queryContext = useContext(QueryContext);
+    const scrollDirection = useScrollDirection();
+
     const [locSelected, setLocSelected] = useState(false);
     const [bedSelected, setBedSelected] = useState(false);
     const [termSelected, setTermSelected] = useState(false);
+    const [pageOffset, setPageOffset] = useState(0);
+
+    useEffect(() => {
+        const updateOffset = () => setPageOffset(window.pageYOffset);
+        window.addEventListener('scroll', function () {
+            updateOffset();
+        });
+        return () => {
+          window.removeEventListener("scroll", updateOffset); // clean up
+        }
+    }, [pageOffset])
 
     const {reloadResults} = props;
 
@@ -53,8 +67,24 @@ export default function QueryModifier(props: QueryModifierProps) : JSX.Element {
         reloadResults();
     }
 
+    const navbarStickStyle = {
+        top: '80px',
+    }
+
+    const navbarStickAndBackgroundStyle = {
+        top: '60px',
+        paddingTop: '20px',
+        background: 'rgba(255, 255, 255, 0.75)'
+    }
+
+    const backgroundStyle = {
+        top: '0px',
+        paddingTop: '20px',
+        background: 'rgba(255, 255, 255, 0.75)'
+    }
+
     return (
-        <div className={styles.queryModifier}>
+        <div className={styles.queryModifier} style={scrollDirection !== 'down' && pageOffset < 200 ? navbarStickStyle : pageOffset > 200 && scrollDirection !== 'down' ? navbarStickAndBackgroundStyle : pageOffset > 200 ? backgroundStyle: {}}>
             <div className={styles.inner}>
                 <Row>
                     <Col xs={4} style={{textAlign: 'right', justifyContent:'right'}}>
@@ -62,11 +92,11 @@ export default function QueryModifier(props: QueryModifierProps) : JSX.Element {
                         </Selector>
                     </Col>
                     <Col xs={4} style={{textAlign: 'center', justifyContent:'center'}}>
-                        <Selector selected={bedSelected} toggleSelect={toggleBed} orientation='none' value={`${query.bedrooms} bedroom`} fieldName="size">
+                        <Selector selected={bedSelected} toggleSelect={toggleBed} orientation='none' value={!query.bedrooms ? 'Any' : `${query.bedrooms} bedroom`} fieldName="size">
                         </Selector>
                     </Col>
                     <Col xs={4} style={{textAlign: 'left', justifyContent:'left'}}>
-                        <Selector selected={termSelected} toggleSelect={toggleTerm} orientation='right' value={`${query.leaseTerm} months`} fieldName="min lease">
+                        <Selector selected={termSelected} toggleSelect={toggleTerm} orientation='right' value={!query.leaseTerm ? 'Any' : `${query.leaseTerm} months`} fieldName="min lease">
                         </Selector>
                     </Col>
                 </Row>

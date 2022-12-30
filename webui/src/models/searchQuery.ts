@@ -6,8 +6,8 @@ export default interface SearchQuery {
     providerNames?: Provider[];
     location: SearchLocation;
     address: string;
-    leaseTerm: number;
-    bedrooms: number;
+    leaseTerm?: number;
+    bedrooms?: number;
     price?: number[];
     name?: string;
     reType?: string;

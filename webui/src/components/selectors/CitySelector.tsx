@@ -12,7 +12,7 @@ import { DBLocation } from "../../models/locations";
 import { Spinner } from "react-bootstrap";
 
 interface CitySelectorProps {
-    city: City;
+    city?: City;
     setCity: (city: City) => void;
     handleNewLocation: (newLocation: DBLocation) => void; 
 }
@@ -91,7 +91,7 @@ export default function CitySelector(props: CitySelectorProps) : JSX.Element {
         if (cities == null) return;
         const cityInfo = cities.find((city) => city.name === cityName);
         if (cityInfo) {
-            if (cityName !== city.name) {
+            if (cityName !== city?.name) {
                 handleNewLocation({
                     lat: cityInfo.location.lat,
                     long: cityInfo.location.long,

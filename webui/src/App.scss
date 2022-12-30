@@ -22,9 +22,11 @@
       url("./styles/fonts/AtkinsonHyperlegible-BoldItalic.ttf") format("truetype");
 }
 
-body {
+body, #root {
   font-family: "Regular";
   background-color: #fafafa;
+  width: 100vw;
+  min-height: 100vh;
 }
 
 h1, h2, h3, h4, h5, h6 {

@@ -1,6 +1,12 @@
 .queryModifier {
     width: 100%;
     margin-top: -20px;
+    position: sticky;
+    top: 20px;
+    transition-property: all; 
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 250ms;
+    z-index: 99999999;
 
     .inner{
         max-width:900px;
@@ -97,5 +103,165 @@
             color: whitesmoke;
             background: linear-gradient(90deg, #8B288F 30%, #313192 120%) !important;
         }
+    }
+
+    .skipButton {
+        background: whitesmoke;
+        border-radius: 30px;
+        padding: 8px 30px;
+        outline: none;
+        border: none;
+        color: #8B288F;
+        font-size: smaller;
+        margin-top: 24px;
+        
+        &:hover {
+            color: white;
+            background: linear-gradient(90deg, #8B288F 30%, #313192 120%) !important;
+        }
+    }
+}
+
+.searchBar {
+    background-color: white;
+    border-radius: 30px;
+    padding: 12px 30px;
+    box-shadow: rgba(67, 0, 175, 0.15) 0px 0px 12px;
+    margin-top: 40px;
+    margin-bottom: 80px;
+    margin-left: 80px;
+    margin-right: 80px;
+    display: flex;
+    direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+
+    .searchHeaders{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        width: 90%;
+
+        .selectionHeader {
+            background: none;
+            border: none;
+            outline: none;
+            flex: 1 1 auto;
+            color: gray;
+        }
+    
+        .primaryHeader {
+            color: black;
+            font-weight: bolder;
+        }
+    
+        .active {
+            width: 40%;
+            padding-bottom: 8px;
+            box-shadow: rgba(67, 0, 175, 0.075) 0px 6px 6px;
+        }
+    
+        .inactive {
+            font-weight: lighter;
+            color: lightgray;
+        }
+    }
+
+    .searchButton {
+        width:36px;
+        max-width: 9%;
+        height: 36px;
+        max-height:100%;
+        background: linear-gradient(90deg, #8B288F 30%, #313192 120%) !important;
+        border-radius: 40px;
+        color: white;
+        border: none;
+        outline: none;
+    }
+}
+
+.searchExpanded {
+    background-color: white;
+    padding: 12px 120px;
+    box-shadow: none;
+    margin-top: 10px;
+    margin-bottom: 0;
+    border-radius: 20px 20px 0 0;
+    max-width: 96vw;
+    width: 80vw;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: rgba(49, 49, 146, 0.1) 0px 0px 8px;
+    z-index: 100000;
+    margin-left: calc(-1*(80vw - 100%)/2);
+}
+
+.expandedContent {
+    width: 80vw;
+    max-width: 96vw;
+    border-radius: 0 0 20px 20px;
+    background: white;
+    padding: 40px 40px;
+    text-align: center;
+    margin-left: calc(-1*(80vw - 100%)/2);
+
+    .inner {
+        margin-right: auto;
+        margin-left: auto;
+        width: 500px;
+        max-width: 100%;
+        text-align: center;
+        padding-bottom: 20px;
+    }
+
+    .confirmButton {
+        background: linear-gradient(90deg, #8B288F 30%, #313192 100%) !important;
+        display: block;
+        min-width: 0 !important;
+        width: 100%;
+        height: 40px;
+        border-radius: 20px;
+        padding: 0;
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: auto;
+        color: white;
+        overflow: hidden;
+        font-family: Regular;
+        font-weight: 700;
+        margin-top: 12px;
+
+        &:hover {
+            color: whitesmoke;
+            background: linear-gradient(90deg, #8B288F 30%, #313192 120%) !important;
+        }
+    }
+
+    .nextButton {
+        background: whitesmoke;
+        display: block;
+        width: 100%;
+        height: 40px;
+        border-radius: 20px;
+        margin-top: 20px;
+        font-family: Regular;
+        font-weight: 700;
+        border: none;
+        outline: none;
+        color: black;
+
+        &:active {
+            color: whitesmoke;
+            background: linear-gradient(90deg, #8B288F 30%, #313192 120%) !important;
+        }
+    }
+
+    .buttonSmall {
+        max-width: 500px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
     }
 }

@@ -5,30 +5,9 @@ import { Container } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 import logoWithText from '../assets/logo-03.png';
 import logoWithTextDark from '../assets/logoDark-07.png';
+import logoWithTextLight from '../assets/logo-03.png';
 import globalStyles from '../styles/global-styles.module.scss';
-
-function useScrollDirection() {
-    const [scrollDirection, setScrollDirection] = useState<string | null>(null);
-  
-    useEffect(() => {
-      let lastScrollY = window.pageYOffset;
-  
-      const updateScrollDirection = () => {
-        const scrollY = window.pageYOffset;
-        const direction = scrollY > lastScrollY ? "down" : "up";
-        if (direction !== scrollDirection && (scrollY - lastScrollY > 10 || scrollY - lastScrollY < -10)) {
-            setScrollDirection(direction);
-        }
-        lastScrollY = scrollY > 0 ? scrollY : 0;
-      };
-      window.addEventListener("scroll", updateScrollDirection); // add event listener
-      return () => {
-        window.removeEventListener("scroll", updateScrollDirection); // clean up
-      }
-    }, [scrollDirection]);
-  
-    return scrollDirection;
-  };
+import useScrollDirection from "./ScrollDirection";
   
 
 export default function Nav() : JSX.Element {
@@ -51,17 +30,24 @@ export default function Nav() : JSX.Element {
     useEffect(() => {
         const scrollPosition = window.pageYOffset;
         if (scrollPosition > 200) {
-            setNavStylesOverride({ backgroundColor: 'rgba(0, 0, 0, 0.9'});
+            setNavStylesOverride({ backgroundColor: 'rgba(255, 255, 255, 1'});
             return;
         }
         setNavStylesOverride({ backgroundColor: 'rgba(0, 0, 0, 0'});
     }, [pageOffset]);
 
+    const getNavImage = () => {
+        if (pageOffset > 200) {
+            return logoWithTextLight;
+        }
+        return logoWithTextDark;
+    }
+
     return (
         <>
         {
             pathname === '/' ?
-            <Navbar sticky='top' bg="light">
+            <Navbar fixed='top' className={globalStyles.lightNav}>
                 <Container>
                     <Navbar.Brand href="/">
                         <img src={logoWithText} alt={'branding'} height={48} />
@@ -71,7 +57,8 @@ export default function Nav() : JSX.Element {
             <Navbar fixed='top' className={globalStyles.darkNavBG} style={{...navStyleOverride, top: scrollDirection !== 'down' ? '0' : '-80px'}}>
                 <Container>
                     <Navbar.Brand href="/">
-                        <img src={logoWithTextDark} alt={'branding'} height={48} />
+                        
+                        <img src={getNavImage()} alt={'branding'} height={48} />
                     </Navbar.Brand>
                 </Container>
             </Navbar>

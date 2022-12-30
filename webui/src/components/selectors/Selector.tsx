@@ -5,7 +5,7 @@ import globalStyles from '../../styles/global-styles.module.scss';
 interface selectProps {
     toggleSelect: () => void;
     orientation?: string;
-    value: string;
+    value?: string;
     selected: boolean;
     fieldName: string;
 }
@@ -51,7 +51,7 @@ export default function Selector(props: PropsWithChildren<selectProps>) : JSX.El
                 </button>
             : 
                 <button className={`${styles.selector}`} style={overrideBorderStyle} onClick={handleSelect}>
-                    <p className={globalStyles.label}>{value}</p>
+                    <p className={globalStyles.label}>{!value ? 'Any' : value}</p>
                     <p>Change {fieldName}</p>
                 </button>
             }
