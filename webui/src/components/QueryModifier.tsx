@@ -94,7 +94,7 @@ export default function QueryModifier(props: QueryModifierProps) : JSX.Element {
                         </Selector>
                     </Col>
                     <Col xs={4} style={{textAlign: 'center', justifyContent:'center', padding: 0}}>
-                        <Selector selected={bedSelected} toggleSelect={toggleBed} orientation='none' value={!query.bedrooms ? 'Any' : `${query.bedrooms} bedroom`} fieldName="size">
+                        <Selector selected={bedSelected} toggleSelect={toggleBed} orientation='none' value={query.bedrooms === undefined ? 'Any' : query.bedrooms === 0 ? 'Studio' : `${query.bedrooms} bedroom`} fieldName="size">
                         </Selector>
                     </Col>
                     <Col xs={4} style={{textAlign: 'left', justifyContent:'left', padding: 0}}>

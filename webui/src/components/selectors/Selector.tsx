@@ -54,7 +54,7 @@ export default function Selector(props: PropsWithChildren<selectProps>) : JSX.El
                 </button>
             : 
                 <button className={`${styles.selector}`} style={overrideBorderStyle} onClick={handleSelect}>
-                    <p className={globalStyles.label}>{!value ? 'Any' : value}</p>
+                    <p className={globalStyles.label}>{value === undefined ? 'Any' : value}</p>
                     <p>Change {fieldName}</p>
                 </button>
             }

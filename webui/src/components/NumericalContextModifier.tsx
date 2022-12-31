@@ -83,11 +83,7 @@ export default function NumericalContextModifier(props: NumericalContextModifier
     ) => {
         if (typeof value === 'number') {
             setValue(value);
-            if (value !== startValue) {
-                setAllowSave(true);
-            } else {
-                setAllowSave(false);
-            }
+            setAllowSave(true);
         }
     }
 
