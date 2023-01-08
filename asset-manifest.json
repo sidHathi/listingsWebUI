@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/listingsWebUI/static/css/main.a1158f3f.css",
+    "main.js": "/listingsWebUI/static/js/main.3cfda9c6.js",
+    "static/js/988.37641a6c.chunk.js": "/listingsWebUI/static/js/988.37641a6c.chunk.js",
+    "static/media/boston.jpeg": "/listingsWebUI/static/media/boston.2e7664892272cad9c3fa.jpeg",
+    "static/media/seattle.jpeg": "/listingsWebUI/static/media/seattle.27149ef7be443270ad30.jpeg",
+    "static/media/nyc.jpeg": "/listingsWebUI/static/media/nyc.13df54610627b64ec0fa.jpeg",
+    "static/media/nycLine-01.png": "/listingsWebUI/static/media/nycLine-01.60679cebbffcc9c90e30.png",
+    "static/media/apartmentsLogo.png": "/listingsWebUI/static/media/apartmentsLogo.7d8f792da216e7397dab.png",
+    "static/media/sanFran.jpeg": "/listingsWebUI/static/media/sanFran.1d582d80a85c275e5493.jpeg",
+    "static/media/AtkinsonHyperlegible-BoldItalic.ttf": "/listingsWebUI/static/media/AtkinsonHyperlegible-BoldItalic.23edeb4cbf5a339bb951.ttf",
+    "static/media/AtkinsonHyperlegible-Bold.ttf": "/listingsWebUI/static/media/AtkinsonHyperlegible-Bold.8dddb94b27fe0590f013.ttf",
+    "static/media/AtkinsonHyperlegible-Italic.ttf": "/listingsWebUI/static/media/AtkinsonHyperlegible-Italic.3de101cf08a334567138.ttf",
+    "static/media/AtkinsonHyperlegible-Regular.ttf": "/listingsWebUI/static/media/AtkinsonHyperlegible-Regular.b67275748172037676f3.ttf",
+    "static/media/gotham.jpeg": "/listingsWebUI/static/media/gotham.daa2f1dff08fa2c53198.jpeg",
+    "static/media/zillowLogo.png": "/listingsWebUI/static/media/zillowLogo.c246d1bfedcfd6cff7f2.png",
+    "static/media/rentLogo2.jpeg": "/listingsWebUI/static/media/rentLogo2.1ab7a16f5a751b7c89ea.jpeg",
+    "static/media/searchIcon.png": "/listingsWebUI/static/media/searchIcon.ed750724e6113a9165ec.png",
+    "static/media/fbmLogo.png": "/listingsWebUI/static/media/fbmLogo.3ff545fa927ed8d3fdb9.png",
+    "index.html": "/listingsWebUI/index.html",
+    "main.a1158f3f.css.map": "/listingsWebUI/static/css/main.a1158f3f.css.map",
+    "main.3cfda9c6.js.map": "/listingsWebUI/static/js/main.3cfda9c6.js.map",
+    "988.37641a6c.chunk.js.map": "/listingsWebUI/static/js/988.37641a6c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a1158f3f.css",
+    "static/js/main.3cfda9c6.js"
+  ]
+}
