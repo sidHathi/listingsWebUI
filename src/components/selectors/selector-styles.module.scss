@@ -136,6 +136,7 @@ $large: 1000px;
             overflow: hidden;
             font-family: Bold;
             font-size: 1.2em;
+            padding: 0;
 
             .darken {
                 padding: 100px 30px 30px 30px;
@@ -159,8 +160,11 @@ $large: 1000px;
         .scrollingItem {
             .cityButton {
                 min-width: 200px;
+                width: 200px;
 
                 .darken {
+                    width: 300px;
+                    margin-left: -50px;
                     padding: 50px 15px 15px 15px;
                 }
             }
