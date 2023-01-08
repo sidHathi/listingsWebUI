@@ -34,8 +34,6 @@
     "webpack": "^4.28.3"
   },
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -76,6 +74,5 @@
     "net": false,
     "stream": false,
     "tls": false
-  },
-  "homepage": "https://sidHathi.github.io/listingsWebUI"
+  }
 }
