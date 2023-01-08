@@ -1,0 +1,81 @@
+$small: 450px;
+$medium: 760px;
+$large: 1000px;
+
+.cardOuter {
+    border-radius: 20px;
+    box-shadow: rgba(49, 49, 146, 0.1) 0px 8px 12px;
+    overflow: hidden;
+    margin: 12px 4px;
+    background-color: white;
+    padding: 0;
+    transition-property: all; 
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 250ms;
+    min-height: calc(100% - 30px);
+    display: flex;
+    flex-direction: column;
+
+    h4 {
+        padding: 0 5px 4px 0;
+    }
+    .cardMain{
+        width: 100%;
+        padding: 20px;
+        padding-top: 40px;
+        display: flex;
+        flex-direction: column;
+
+        p {
+            font-size: 0.9em;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2; /* number of lines to show */
+                    line-clamp: 2; 
+            -webkit-box-orient: vertical;
+        }
+        a {
+            font-size: 1.1em;
+            font-weight: 700;
+            margin-top: auto !important;
+        }
+        img {
+            margin-bottom: 16px;
+            max-height: 30px;
+            // border: 1px solid rgba(149, 157, 165, 0.1);
+            // border-radius: 15px;
+        }
+    }
+    .cardSecondary {
+        margin-top: auto !important;
+        height: max-content;
+        width: 100%;
+        padding: 20px;
+        background-color: whitesmoke;
+    }
+
+    @media screen and (max-width: $large) {
+        .cardMain {
+            padding: 20px 12px;
+        }
+    }
+}
+
+.cityBanner {
+    width: 100%;
+
+    .darken {
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        padding-top: 10vh;
+        padding-bottom: 5vh;
+        text-align: center;
+
+        h1 {
+            color: white;
+            text-align: center;
+        }
+    }
+}

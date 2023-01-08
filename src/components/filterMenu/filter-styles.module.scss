@@ -1,0 +1,225 @@
+.filterMenuHeaders {
+    width: 100%;
+    padding-top: 20px;
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0;
+
+    .pageTitle {
+        margin-left: 10px;
+        margin-bottom: auto;
+        align-self: flex-start;
+        box-sizing: content-box;
+        display: inherit;
+        padding: 0;
+        font-size: 1.5em;
+        font-weight: 100;
+    }
+    
+    .menuButton {
+        display: inherit;
+        border-radius: 24px;
+        border: none;
+        padding: 8px 30px;
+        outline: none;
+        margin-bottom: 10px;
+        background-color: whitesmoke;
+        color: rgb(49, 49, 146);
+        font-family: Regular;
+        font-weight: 700;
+        margin-left: 10px;
+        margin-right: 4px;
+    }
+
+    .leftMost {
+        margin-left: auto;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .filterMenuHeaders {
+        .menuButton {
+            padding: 8px 20px;
+        }
+    }
+}
+
+.filterMenuExpanded {
+    background-color: white;
+    padding: 20px 20px;
+    width: calc(100% - 8px);
+    margin-left: 4px;
+    margin-right: 4px;
+    border-radius: 20px;
+    margin-top: -5px;
+    text-align: left;
+    box-shadow: rgba(49, 49, 146, 0.05) 0px 4px 6px;
+    font-family: "Regular";
+
+    .confirmButton {
+        background: whitesmoke;
+        color: #8B288F;
+        height: auto;
+        border-radius: 20px;
+        padding: 8px 20px 8px 20px;
+        font-weight: bolder;
+        display: block;
+        margin-left: auto;
+        margin-right: 12px;
+        margin-top: 4px;
+        margin-bottom: auto;
+        box-sizing: content-box;
+        text-transform: uppercase;
+    }
+
+    .filterRow {
+        display: flex;
+        direction: row;
+        flex-wrap: wrap;
+        row-gap: 10px;
+    }
+
+    .centerBlock {
+        margin-right: auto;
+        margin-left: auto;
+        display: flex;
+        direction: row;
+        flex-wrap: wrap;
+        row-gap: 10px;
+    }
+    
+    h5 {
+        margin-left:12px;
+        margin-top: 10px;
+        margin-bottom: auto;
+        margin-right: 20px;
+    }
+}
+
+.cornerFold {
+    border-radius: 20px 0 20px 20px;
+}
+
+.filterContainer {
+    border-radius: 8px;
+    padding: 0;
+    overflow: hidden;
+    margin-right: 10px;
+    margin-top: 2px;
+    min-width: 180px;
+    height: min-content;
+    margin-bottom: auto;;
+
+    .filterHeader {
+        width: 100%;
+        border: none;
+        outline: none;
+        background-color: whitesmoke;
+        padding: 12px 20px;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        height: min-content;
+
+        p {
+            font-size: medium;
+            font-weight: bold;
+            margin: 0;
+        }
+        .addRemoveIcon {
+            color: #8B288F;
+        }
+    }
+
+    .filterContent {
+        padding: 20px 20px;
+        min-width: 300px;
+
+        .content {
+            text-align: left;
+        }
+
+        .filterInput {
+            width: 100%;
+            outline: none;
+            border: none;
+            background-color: whitesmoke;
+            border-radius: 20px;
+            padding: 8px 20px;
+        }
+
+        .checkBoxRow {
+            display: flex;
+            direction: row;
+            justify-content: space-between;
+        }
+        
+        p {
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+    }
+
+    .small {
+        min-width: 240px;
+    }
+
+    .extraPadding {
+        padding: 20px 30px;
+    }
+}
+
+.sortFieldsContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: auto;
+    margin-right: auto;
+
+    .sortSelect {
+        border:none;
+        outline: none;
+        border-radius: 8px;
+        background-color: whitesmoke;
+        padding: 12px 20px;
+        margin: 4px;
+    }
+}
+
+.filterFlagsContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-right: auto;
+    margin-bottom: auto;
+
+    .filterFlag{
+        border:none;
+        outline: none;
+        border-radius: 30px;
+        background-color: white;
+        color:rgba(139, 40, 143, 0.7);
+        padding: 12px 20px;
+        margin: 4px;
+        box-shadow: rgba(49, 49, 146, 0.05) 0px 4px 6px;
+
+        &:hover {
+            box-shadow: none;
+        }
+
+        p {
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+    }
+}
+
+
+@media screen and (max-width: 600px) {
+    .filterFlagsContainer {
+        .filterFlag {
+            padding: 8px 20px;
+        }
+    }
+}

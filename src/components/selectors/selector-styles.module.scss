@@ -1,0 +1,169 @@
+$small: 450px;
+$medium: 760px;
+$large: 1000px;
+
+.selector {
+    padding: 8px 64px 8px 64px;
+    width: calc(100% - 16px);
+    text-align: center;
+    border: none;
+    border-radius: 30px;
+    box-shadow: rgba(49, 49, 146, 0.1) 0px 8px 12px;
+    background-color: whitesmoke;
+    margin-right: 8px;
+    margin-left: 8px;
+    box-sizing: border-box;
+
+    p {
+        margin: 0 !important;
+    }
+}
+
+.selected {
+    box-shadow: none !important;
+    background-color: white;
+    border-radius: 8px 8px 0 0 !important;
+
+    p {
+        font-size: 1.1em;
+        font-weight: 700;
+        padding-top: 10px;
+        padding-bottom: 20px;
+    }
+}
+
+@media screen and (max-width: $medium) {
+   .selector {
+        padding: 4px;
+        margin-right: 2px;
+        margin-left: 2px;
+        width: calc(100% - 4px);
+        border-radius: 8px;
+
+        p {
+            font-size: 0.8em;
+            margin: 0;
+        }
+   }
+}
+
+.locationHandler{
+    .locationInput {
+        border: none;
+        box-shadow: none;
+        background-color: rgba(0, 0, 0, 0.05);
+        padding: 10px 20px 10px 20px;
+        border-radius: 20px;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        margin-top: 10px;
+        width: 100%;
+        display: inline-block;
+
+        &:focus {
+            outline: none;
+            background-color: rgba(0, 0, 0, 0.1);;
+        }
+    }
+
+    .searchContainer {
+        display: inline;
+    }
+
+    .searchButton {
+        background: linear-gradient(90deg, #8B288F 30%, #313192 100%) !important;
+        display: inline;
+        min-width: 0 !important;
+        width: 36px;
+        height: 36px;
+        border-radius: 20px;
+        padding: 0;
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: auto;
+        color: white;
+        overflow: hidden;
+
+        &:hover {
+            color: whitesmoke;
+            background: linear-gradient(90deg, #8B288F 30%, #313192 120%) !important;
+        }
+    }
+    
+    .suggestions{
+        border-radius: 20px;
+        box-shadow: rgba(49, 49, 146, 0.05) 0px 4px 6px;
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .locationSuggestion {
+        border: none;
+        box-shadow: none;
+        padding: 10px;
+        width: 90%;
+        text-align: left;
+        background: none;
+
+        &:hover {
+            border-radius: 10px;
+            padding: 12px;
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+    }
+}
+
+.scrollContainer {
+    position: relative;
+    display: flex;
+    direction: horizontal;
+    overflow-x: scroll;
+    white-space: nowrap;
+
+    .scrollingItem {
+        display: inline-block;
+
+        .cityButton {
+            border: none;
+            box-shadow: none;
+            outline: none;
+            font-family: Bold;
+            margin: 8px;
+            border-radius: 20px;
+            color: white;
+            min-width: 300px;
+            overflow: hidden;
+            font-family: Bold;
+            font-size: 1.2em;
+
+            .darken {
+                padding: 100px 30px 30px 30px;
+                background-color: rgba(0, 0, 0, 0.7);
+                width: calc(100% + 16px);
+                margin-left: -8px;
+                height: 100%;
+            }
+        }
+        .current {
+            .darken {
+                background-color: rgba(0, 0, 0, 0.25);
+                box-shadow: rgba(49, 49, 146, 0.05) 0px 4px 6px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $medium) {
+    .scrollContainer {
+        .scrollingItem {
+            .cityButton {
+                min-width: 200px;
+
+                .darken {
+                    padding: 50px 15px 15px 15px;
+                }
+            }
+        }
+    }
+}

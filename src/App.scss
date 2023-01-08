@@ -1,0 +1,108 @@
+$small: 450px;
+$medium: 760px;
+$large: 1000px;
+
+@font-face {
+  font-family: "Regular";   /*Can be any text*/
+  src: local("AtkinsonHyperlegible-Regular"),
+      url("./styles/fonts/AtkinsonHyperlegible-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Italic";   /*Can be any text*/
+  src: local("AtkinsonHyperlegible-Italic"),
+      url("./styles/fonts/AtkinsonHyperlegible-Italic.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Bold";   /*Can be any text*/
+  src: local("AtkinsonHyperlegible-Bold"),
+      url("./styles/fonts/AtkinsonHyperlegible-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "BoldItalic";   /*Can be any text*/
+  src: local("AtkinsonHyperlegible-BoldItalic"),
+      url("./styles/fonts/AtkinsonHyperlegible-BoldItalic.ttf") format("truetype");
+}
+
+body, #root {
+  font-family: "Regular";
+  background-color: #fafafa;
+  width: 100vw;
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Bold";
+}
+
+h1, h2 {
+  font-weight: bold;
+}
+
+strong {
+  font-family: "Regular";
+}
+
+a {
+  color: #4300AF;
+  text-decoration: none;
+  &:hover {
+    color: #313192;
+  }
+}
+
+@media screen and (max-width: $small) {
+  h1, h2 {
+    font-size: 2rem;
+  }
+
+  p {
+    font-size: 0.8em;
+  }
+
+  button, label, input textarea {
+    font-size: 0.8em;
+  }
+}
+
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
