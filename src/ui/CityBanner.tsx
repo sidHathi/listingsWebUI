@@ -24,6 +24,7 @@ export default function CityBanner(props: CityBannerProps) : JSX.Element {
                 return sanFranBg;
             case'new york city, ny':
                 return nycBg;
+            case 'washington, dc.':
             case 'washington, dc., usa':
                 return dcBg
             default:
