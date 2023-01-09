@@ -5,6 +5,7 @@ import seattleBg from '../assets/seattle.jpeg';
 import nycBg from '../assets/nyc.jpeg';
 import sanFranBg from '../assets/sanFran.jpeg';
 import gotham from '../assets/gotham.jpeg';
+import dcBg from '../assets/dcBanner.jpeg';
 
 interface CityBannerProps {
     city: string;
@@ -23,6 +24,8 @@ export default function CityBanner(props: CityBannerProps) : JSX.Element {
                 return sanFranBg;
             case'new york city, ny':
                 return nycBg;
+            case 'washington, dc., usa':
+                return dcBg
             default:
                 return gotham;
         }

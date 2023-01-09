@@ -8,6 +8,7 @@ import bostonImage from '../../assets/boston.jpeg'
 import nycImage from '../../assets/nyc.jpeg';
 import seattleImage from '../../assets/seattle.jpeg';
 import sfImage from '../../assets/sanFran.jpeg';
+import dcImage from '../../assets/dcBanner.jpeg';
 import { DBLocation } from "../../models/locations";
 import { Spinner } from "react-bootstrap";
 import { AppContext } from "../../AppContext";
@@ -64,6 +65,9 @@ export default function CitySelector(props: CitySelectorProps) : JSX.Element {
                 break;
             case 'seattle, wa':
                 file = seattleImage;
+                break;
+            case 'washington, dc., usa':
+                file = dcImage;
                 break;
             default:
                 file = sfImage;
