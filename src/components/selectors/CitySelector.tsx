@@ -66,6 +66,7 @@ export default function CitySelector(props: CitySelectorProps) : JSX.Element {
             case 'seattle, wa':
                 file = seattleImage;
                 break;
+            case 'washington, dc.':
             case 'washington, dc., usa':
                 file = dcImage;
                 break;
