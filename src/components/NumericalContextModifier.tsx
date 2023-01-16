@@ -92,7 +92,7 @@ export default function NumericalContextModifier(props: NumericalContextModifier
             case 'bedrooms':
                 return 'Number of bedrooms';
             case 'leaseTerm':
-                return "Minimum lease term";
+                return "Minimum lease term (months)";
             default: 
                 return contextKey
         }
