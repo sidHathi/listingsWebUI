@@ -98,7 +98,7 @@ export default function QueryModifier(props: QueryModifierProps) : JSX.Element {
                         </Selector>
                     </Col>
                     <Col xs={4} style={{textAlign: 'left', justifyContent:'left', padding: 0}}>
-                        <Selector selected={termSelected} toggleSelect={toggleTerm} orientation='right' value={!query.leaseTerm ? 'Any' : `${query.leaseTerm} months`} fieldName="min lease (months)">
+                        <Selector selected={termSelected} toggleSelect={toggleTerm} orientation='right' value={!query.leaseTerm ? 'Any' : `${query.leaseTerm} months`} fieldName="min lease">
                         </Selector>
                     </Col>
                 </Row>
